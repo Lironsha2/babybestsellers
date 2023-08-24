@@ -1,0 +1,46 @@
+const productsContainer = document.getElementById('products');
+
+// Example product data (you would fetch this from a database)
+const products = [
+    { name: 'Baby Onesie', price: 19.99, image: 'image_url_here' },
+    { name: 'Diaper Bag', price: 39.99, image: 'image_url_here' },
+    // Add more products here
+];
+
+// Display products on the page
+function displayProducts() {
+    productsContainer.innerHTML = '';
+
+    products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        
+        const productImage = document.createElement('img');
+        productImage.src = product.image;
+        
+        const productName = document.createElement('h2');
+        productName.textContent = product.name;
+        
+        const productPrice = document.createElement('p');
+        productPrice.textContent = `$${product.price.toFixed(2)}`;
+        
+        const addToCartButton = document.createElement('button');
+        addToCartButton.textContent = 'Add to Cart';
+        addToCartButton.addEventListener('click', () => addToCart(product));
+        
+        productCard.appendChild(productImage);
+        productCard.appendChild(productName);
+        productCard.appendChild(productPrice);
+        productCard.appendChild(addToCartButton);
+        
+        productsContainer.appendChild(productCard);
+    });
+}
+
+// Example function to add products to the cart
+function addToCart(product) {
+    // Implement your cart logic here
+}
+
+// Initial display of products
+displayProducts();
